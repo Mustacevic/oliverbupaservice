@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.1"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "BusinessPartner": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "BusinessPartner.SubscriptionCollection": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.semantics": "subscriptions",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32,
+          "@sap.label": "Sub. ID",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "user": {
+          "type": "cds.String",
+          "length": 12,
+          "@m.FC_TargetPath": "SyndicationAuthorName",
+          "@m.FC_KeepInContent": "false",
+          "@sap.label": "User Name",
+          "@sap.creatable": "false",
+          "@sap.filterable": "false"
+        },
+        "updated": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@m.FC_TargetPath": "SyndicationUpdated",
+          "@m.FC_KeepInContent": "false",
+          "@sap.label": "Time Stamp",
+          "@sap.creatable": "false",
+          "@sap.filterable": "false"
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 255,
+          "@m.FC_TargetPath": "SyndicationTitle",
+          "@m.FC_KeepInContent": "false",
+          "@sap.label": "Title",
+          "@sap.filterable": "false"
+        },
+        "deliveryAddress": {
+          "type": "cds.LargeString",
+          "@sap.label": "Delivery Address",
+          "@sap.filterable": "false"
+        },
+        "persistNotifications": {
+          "type": "cds.Boolean",
+          "@sap.label": "Persist Notification",
+          "@sap.filterable": "false"
+        },
+        "collection": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Collection",
+          "@sap.filterable": "false"
+        },
+        "filter": {
+          "type": "cds.LargeString",
+          "@sap.label": "Filter",
+          "@sap.filterable": "false"
+        },
+        "select": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.label": "Select",
+          "@sap.filterable": "false"
+        },
+        "changeType": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "Change Type"
+        }
+      }
+    },
+    "BusinessPartner.NotificationCollection": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.addressable": "false",
+      "@sap.content.version": "1",
+      "@sap.semantics": "notifications",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.String",
+          "length": 32,
+          "@sap.label": "Notification ID",
+          "notNull": true
+        },
+        "collection": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Collection"
+        },
+        "title": {
+          "type": "cds.LargeString",
+          "@m.FC_TargetPath": "SyndicationTitle",
+          "@m.FC_KeepInContent": "false",
+          "@sap.label": "Notif. Text"
+        },
+        "updated": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTime",
+          "@m.FC_TargetPath": "SyndicationUpdated",
+          "@m.FC_KeepInContent": "false",
+          "@sap.label": "Time Stamp"
+        },
+        "changeType": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "Change Type"
+        },
+        "entriesOfInterest": {
+          "type": "cds.Integer",
+          "@sap.label": "No. of Entries"
+        },
+        "recipient": {
+          "type": "cds.String",
+          "length": 112,
+          "@sap.label": "Recipient",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        }
+      }
+    },
+    "BusinessPartner.BusinessPartners": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.addressable": "false",
+      "@sap.content.version": "1",
+      "elements": {
+        "Id": {
+          "key": true,
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Type": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "Title": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "Organization": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "FirstName": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "LastName": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "Street": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "HouseNumber": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PostalCode": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "City": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "Country": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "Region": {
+          "type": "cds.LargeString",
+          "@sap.unicode": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        }
+      }
+    }
+  }
+}
